@@ -1,8 +1,8 @@
 echo --------------------------INSTALLING PYTHON DEPENDENCIES------------------------
-sudo apt install build-essential -y
-apt-get install python3-dev -y
-apt-get install libpq-dev -y
-apt install python3-venv -y
+sudo apt-get -y install build-essential
+apt-get install -y python3-dev
+apt-get install -y libpq-dev
+apt-get install -y python3-venv
 python3 -m venv ./venv/
 source venv/bin/activate
 #installing psycopg here to get the C implem in place of the pure python one

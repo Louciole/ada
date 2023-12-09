@@ -2,9 +2,47 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Kip.yt | URL shortener </title>
+    <link rel="stylesheet" href="style.css">
+    <script src="ada.js"></script>
+    <script src="theme.js"></script>
+    <link rel="icon" type="image/x-icon" href="/logo.ico">
+    <meta name="viewport" id="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=10.0,minimal-ui">
+    <meta name="referrer" content="always">
+    <meta name="mobile-web-app-capable" content="yes">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;700&display=swap" rel="stylesheet">
 </head>
-<body>
-  ADA URL SHORTENER
+<body onload="initAda()">
+    <section id="banner">
+        <h1>Link sharing made easy !</h1>
+        <h2>Create custom short links with Carbonlab's open source and minimalist link shortener.</h2>
+    </section>
+    <section id="menu-wrapper">
+        <div id="menu">
+            <h3>Shorten a link</h3>
+            <h4>Long URL</h4>
+            <label>
+                <input id="og" type="text" placeholder="https://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol">
+            </label>
+            <h4>Desired link</h4>
+            <div class="inline">
+                <label>
+                    <input type="text" disabled value="kip.yt" style="width: 8ch">
+                </label>
+                /
+                <label style="flex: 1">
+                    <input id="desired" type="text" placeholder="teapot">
+                </label>
+            </div>
+            <div class="btn" id="process"> Create link </div>
+            <label id="result" style="display: none">
+                <input type="text" disabled>
+            </label>
+        </div>
+
+    </section>
 </body>
 </html>
