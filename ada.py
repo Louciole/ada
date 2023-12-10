@@ -15,9 +15,9 @@ class Ada(object):
 
     @cherrypy.expose
     def default(self, target, **kwargs):
-        res = table.get(target)
+        res = db.getSomething("url",target)
         if res:
-            raise cherrypy.HTTPRedirect(res)
+            raise cherrypy.HTTPRedirect(res["og"])
         else:
             raise cherrypy.HTTPError("404")
 
@@ -27,32 +27,23 @@ class Ada(object):
             uid = ''.join(random.sample(B62, 7))
 
             while 1:
-                if table.get(uid):
+                if db.getSomething("url",uid):
                     uid = ''.join(random.sample(B62, 7))
                 else:
-                    table[uid] = link
+                    db.insertDict("url",{"id": uid,"og":link})
                     return uid
         else:
             uid=pref
             while 1:
-                if table.get(uid):
+                if db.getSomething("url",uid):
                     uid = pref + ''.join(random.sample(B62, 3))
                 else :
-                    table[uid] = link
+                    db.insertDict("url",{"id": uid,"og":link})
                     return uid
 
 config = ConfigParser()
 PATH = dirname(abspath(__file__))
-
-# TODO delete below
-
 B62 = string.digits + string.ascii_letters
-
-table = {}
-
-
-# TODO delete before
-
 
 def importConf():
     try:
@@ -65,6 +56,7 @@ if __name__ == '__main__':
     importConf()
     db = db.DB(user=config.get('DB', 'DB_USER'), password=config.get('DB', 'DB_PASSWORD'),
                host=config.get('DB', 'DB_HOST'), port=int(config.get('DB', 'DB_PORT')), db=config.get('DB', 'DB_NAME'))
+
 
     cherrypy.config.update({'server.socket_host': config.get('server', 'IP'),
                             'server.socket_port': int(config.get('server', 'PORT')), 'tools.staticdir.on': True,

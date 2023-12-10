@@ -1,7 +1,8 @@
 # ADA 🐛
 
 ❓️The favourite URL shortener of nobody but me. <br>  
-🟢 Status : https://louciole.github.io/carbon-status/
+🟢 Status : https://louciole.github.io/carbon-status/ <br>
+🌍 Production : https://kip.yt
 
 ## 🏎️ getting started
 
@@ -13,6 +14,7 @@
       git clone git@gitlab.com:Louciole/ada.git  
 or download it manually
 
+https://gitlab.com/Louciole/ada/-/releases/v1
 
 ### install :
 
@@ -25,10 +27,17 @@ or download it manually
 
        bash install.sh  
 
+3. (optional) create a service to bundle it  
+   edit `/misc/ada.service` with your path then :
+
+       bash misc/createService.sh  
+
 ### one time run :
 
 	sudo venv/bin/python ada.py  
 
+### starting the service :
+	systemctl start ada  
 
 
 ## 🖥️ Work
@@ -38,3 +47,13 @@ run
 	git update-index --assume-unchanged ada.ini
 
 ## 🧶 Miscellaneous
+
+### show logs :
+	journalctl -u ada  
+
+### show status :
+	systemctl status ada  
+
+### restart :
+	systemctl restart ada  
+

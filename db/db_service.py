@@ -68,7 +68,7 @@ class DB:
         self.conn.commit()
 
     def resetTable(self, table):
-        sql_str = """delete from {} cascade;ALTER SEQUENCE {} RESTART WITH 1""".format(table, table + "_id_seq")
+        sql_str = """delete from {} cascade;""".format(table)
         self.cur.execute(sql_str)
         self.conn.commit()
 
