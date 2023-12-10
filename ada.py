@@ -6,8 +6,6 @@ from configparser import ConfigParser
 
 from db import db_service as db
 
-import hashlib
-import base62
 import string
 
 class Ada(object):
@@ -23,18 +21,25 @@ class Ada(object):
         else:
             raise cherrypy.HTTPError("404")
 
-    @staticmethod
-    def addLink(link):
-        #uid = base62.encodebytes(hashlib.md5(link.encode()).digest())
-        uid = ''.join(random.sample(B62, 7))
+    @cherrypy.expose
+    def addLink(self, link, pref=None):
+        if not pref:
+            uid = ''.join(random.sample(B62, 7))
 
-        while 1:
-            if table.get(uid):
-                uid = ''.join(random.sample(B62, 7))
-            else:
-                table[uid] = link
-                return uid
-
+            while 1:
+                if table.get(uid):
+                    uid = ''.join(random.sample(B62, 7))
+                else:
+                    table[uid] = link
+                    return uid
+        else:
+            uid=pref
+            while 1:
+                if table.get(uid):
+                    uid = pref + ''.join(random.sample(B62, 3))
+                else :
+                    table[uid] = link
+                    return uid
 
 config = ConfigParser()
 PATH = dirname(abspath(__file__))
@@ -44,8 +49,6 @@ PATH = dirname(abspath(__file__))
 B62 = string.digits + string.ascii_letters
 
 table = {}
-print(Ada.addLink("https://carbonlab.dev"))
-print(Ada.addLink("https://habert.me"))
 
 
 # TODO delete before

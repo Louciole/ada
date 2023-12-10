@@ -1,4 +1,5 @@
 create table URL (
-    id varchar(7) NOT NULL PRIMARY KEY,
+    id varchar(18) NOT NULL PRIMARY KEY,
     og varchar(512) NOT NULL,
+    lastVisited DATE,
 );

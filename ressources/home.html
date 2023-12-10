@@ -16,33 +16,37 @@
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans:wght@300;700&display=swap" rel="stylesheet">
 </head>
 <body onload="initAda()">
+    <div id="notif" style="display: none;">link copied in clipboard</div>
     <section id="banner">
         <h1>Link sharing made easy !</h1>
         <h2>Create custom short links with Carbonlab's open source and minimalist link shortener.</h2>
     </section>
     <section id="menu-wrapper">
         <div id="menu">
-            <h3>Shorten a link</h3>
-            <h4>Long URL</h4>
-            <label>
-                <input id="og" type="text" placeholder="https://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol">
-            </label>
-            <h4>Desired link</h4>
-            <div class="inline">
+            <form id="create">
+                <h3>Shorten a link</h3>
+                <h4>Long URL</h4>
                 <label>
-                    <input type="text" disabled value="kip.yt" style="width: 8ch">
+                    <input id="og" type="url" required placeholder="https://en.wikipedia.org/wiki/Hyper_Text_Coffee_Pot_Control_Protocol" >
                 </label>
-                /
-                <label style="flex: 1">
-                    <input id="desired" type="text" placeholder="teapot">
-                </label>
-            </div>
-            <div class="btn" id="process"> Create link </div>
-            <label id="result" style="display: none">
-                <input type="text" disabled>
-            </label>
+                <h4>Desired link (optional)</h4>
+                <div class="inline">
+                    <label>
+                        <input type="text" disabled value="kip.yt" style="width: 8ch" >
+                    </label>
+                    /
+                    <label id="desired-label">
+                        <input id="desired" type="text" placeholder="teapot" minlength="2" maxlength="16" pattern="[a-zA-Z0-9]*" title="desired URL (alphadecimal)">
+                    </label>
+                </div>
+                <input type="submit" class="btn" id="process" value="Create link">
+            </form>
+            <input type="text" readonly id="result" style="display: none">
+
         </div>
 
     </section>
+
+    <section id="copy">Made with <3 by <a href="https://carbonlab.dev">Carbonlab</a></section>
 </body>
 </html>
