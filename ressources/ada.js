@@ -17,12 +17,10 @@ function initAda() {
 }
 
 function createLink(){
-    console.log(og.value,desiredLink.value)
-    const url = "/addLink?link="+og.value+"&pref="+desiredLink.value
+    const url = "/addLink?link="+og.value+"'&pref="+desiredLink.value
     let request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.onload = function() {
-        console.log("loaddeeeddd",request.responseText)
         resultInput.style.display="flex"
         resultInput.addEventListener("click",copylink)
         link = "https://kip.yt/".concat(request.responseText)

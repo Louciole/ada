@@ -22,7 +22,7 @@ class Ada(object):
             raise cherrypy.HTTPError("404")
 
     @cherrypy.expose
-    def addLink(self, link, pref=None):
+    def addLink(self, link, pref=None, **kwargs):
         if not pref:
             uid = ''.join(random.sample(B62, 7))
 
