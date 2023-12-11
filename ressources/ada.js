@@ -17,7 +17,7 @@ function initAda() {
 }
 
 function createLink(){
-    const url = "/addLink?link="+og.value+"'&pref="+desiredLink.value
+    const url = "/addLink?link="+encodeURIComponent(og.value)+"&pref="+desiredLink.value
     let request = new XMLHttpRequest();
     request.open('POST', url, true);
     request.onload = function() {
