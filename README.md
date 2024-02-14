@@ -1,5 +1,10 @@
 # ADA 🐛
 
+
+> [!WARNING]
+> This is a mirror of https://gitlab.com/Louciole/ada, please use the original repo
+
+
 ❓️The favourite URL shortener of nobody but me. <br>  
 🟢 Status : https://louciole.github.io/carbon-status/ <br>
 🌍 Production : https://kip.yt
