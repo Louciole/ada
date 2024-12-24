@@ -1,24 +1,21 @@
-from configparser import ConfigParser
-import os
+from sakura import Server
+from os.path import abspath, dirname
+import sys
+from psycopg import sql
 
-import db_service as db
-
-
-config = ConfigParser()
-
-def importConf():
-    try:
-        config.read('./ada.ini')
-    except:
-        print("please create a ada.ini file")
+PATH = dirname(abspath(__file__))
 
 
-if __name__ == '__main__':
-    importConf()
-    db = db.DB(user=config.get('DB', 'DB_USER'), password=config.get('DB', 'DB_PASSWORD'),
-               host=config.get('DB', 'DB_HOST'), port=int(config.get('DB', 'DB_PORT')), db=config.get('DB', 'DB_NAME'))
-    db.init()
-    db.insertDict("url",{"id": "carbon","og":"https://carbonlab.dev"})
-    print(db.getSomething("url","carbon"))
-    db.resetTable("url")
-    print("DB ready")
+class DBInitializer(Server):
+
+    def initDB(self):
+        self.referenceUniauth()
+        self.db.cur.execute(open(self.path + "/db/schema.sql", "r").read())
+        self.db.conn.commit()
+
+
+
+initializer = DBInitializer(path=PATH[:-3], configFile="/server.ini", noStart=True)
+initializer.initUniauth()
+initializer.initDB()
+print("DB ready")

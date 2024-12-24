@@ -18,19 +18,7 @@ https://gitlab.com/Louciole/ada/-/releases/v1
 
 ### install :
 
-0. install postgresql
-
-       apt install postgresql postgresql-contrib -y
-1. edit `ada.ini` with your parameters
-
-2. Install the dependencies
-
-       bash install.sh  
-
-3. (optional) create a service to bundle it  
-   edit `/misc/ada.service` with your path then :
-
-       bash misc/createService.sh  
+0. bash install.sh
 
 ### one time run :
 

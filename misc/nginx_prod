@@ -1,0 +1,20 @@
+server{
+    listen 80;
+    listen 443;
+    server_name kip.yt www.kip.yt;
+
+    ssl_certificate    /etc/letsencrypt/live/kip.yt/fullchain.pem;
+    ssl_certificate_key    /etc/letsencrypt/live/kip.yt/privkey.pem;
+
+
+    location /static/ {
+        autoindex off;
+        root /var/www/html/ada;
+    }
+
+    location / {
+        proxy_set_header Host $host;
+        proxy_pass "http://127.0.0.1:404";
+        proxy_redirect off;
+    }
+}

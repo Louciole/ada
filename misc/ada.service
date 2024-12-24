@@ -4,6 +4,6 @@ After=multi-user.target
 [Service]
 Type=simple
 Restart=always
-ExecStart=/var/www/html/ada/venv/bin/python /var/www/html/ada/ada.py
+ExecStart=/var/www/html/ada/venv/bin/python /var/www/html/ada/server.py
 [Install]
 WantedBy=multi-user.target

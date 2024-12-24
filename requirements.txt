@@ -1,4 +1,1 @@
-CherryPy~=18.8.0
-configparser~=5.3.0
-psycopg~=3.1.9
-pybase62
+colorama

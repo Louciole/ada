@@ -1,13 +1,14 @@
-# Default ignored files
-/shelf/
-/.idea/workspace.xml
 /.idea/
-ada.iml
-# Ada specific ignored dirs
+*.iml
+/dist/
+/static/public/*
+/mailing/dkim.txt
 /venv/
-/ressources/public/
-# Editor-based HTTP Client requests
-/httpRequests/
-# Datasource local storage ignored files
-/dataSources/
-/dataSources.local.xml
+/.venv/
+/static/*_filled
+crontab
+node_modules/
+yarn.lock
+.parcel-cache/
+package.json
+/static/attachements/*

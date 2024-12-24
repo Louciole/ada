@@ -1,18 +1,17 @@
 echo --------------------------INSTALLING PYTHON DEPENDENCIES------------------------
-sudo apt-get -y install build-essential
-apt-get install -y python3-dev
-apt-get install -y libpq-dev
-apt-get install -y python3-venv
-python3 -m venv ./venv/
+sudo apt install postgresql postgresql-contrib -y
+sudo apt install build-essential -y
+sudo add-apt-repository ppa:deadsnakes/ppa
+sudo apt install python3.11
+sudo apt install python3.11-dev -y
+sudo apt install libpq-dev -y
+sudo apt install python3.11-venv -y
+python3.11 -m venv ./venv/
 source venv/bin/activate
-#installing psycopg here to get the C implem in place of the pure python one
+#installing psycopg here to get the C implem in place of th pure python one
 pip install "psycopg[c]"
+pip install git+https://gitlab.com/Louciole/sakura.git/
 pip install -r requirements.txt
-echo --------------------------------CREATING A DATABASE-----------------------------
-sudo -u postgres createdb ada
-echo -----------------------------------CREATING A USER------------------------------
-echo Please enter a username :
-read username
-sudo -u postgres createuser $username --pwprompt
-echo ----------------------------CREATING TABLES AND TESTING-------------------------
-python3 ./db/initDB.py
+sudo apt install nginx -y
+sudo apt install systemd -y
+python3 ./install.py all
